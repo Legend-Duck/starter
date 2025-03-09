@@ -55,4 +55,11 @@ M.mason = {
   pkgs = { 'docformatter', 'xmlformatter' }, -- Temp fix
 }
 
+-- M.nvdash = { load_on_startup = true }
+-- M.ui = {
+--       tabufline = {
+--          lazyload = false
+--      }
+--}
+
 return M
