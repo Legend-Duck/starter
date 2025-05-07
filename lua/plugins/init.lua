@@ -92,4 +92,8 @@ return {
     branch = 'v0.6',
     opts = {},
   },
+
+  -- test new blink
+  -- { import = "nvchad.blink.lazyspec" },
+
 }
