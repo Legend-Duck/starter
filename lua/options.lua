@@ -21,7 +21,8 @@ local options = {
   --- Custom ---
   -- colorcolumn = '100',
   list = true,
-  listchars = 'eol:↴,tab:> ,space:·,nbsp:+',
+  -- listchars = 'eol:↴,tab:> ,space:·,nbsp:+',
+  listchars = 'tab:> ,space:·,nbsp:+',
   relativenumber = false,
   scrolloff = 999,
 }

@@ -13,10 +13,10 @@ local options = {
     xml = { 'xmlformatter' },
     yaml = { 'prettier' },
     -- Use the "*" filetype to run formatters on all filetypes.
-    ['*'] = { 'codespell' },
+    -- ['*'] = { 'codespell' },
     -- Use the "_" filetype to run formatters on filetypes that don't
     -- have other formatters configured.
-    ['_'] = { 'trim_whitespace' },
+    -- ['_'] = { 'trim_whitespace' },
   },
 
   format_on_save = {
