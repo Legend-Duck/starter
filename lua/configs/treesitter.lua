@@ -1,7 +1,6 @@
 local options = {
   ensure_installed = {
     --- Language ---
-    'awk',
     'css',
     'go',
     'html',
