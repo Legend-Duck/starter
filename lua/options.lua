@@ -22,7 +22,7 @@ local options = {
   -- colorcolumn = '100',
   list = true,
   -- listchars = 'eol:↴,tab:> ,space:·,nbsp:+',
-  listchars = 'tab:> ,space:·,nbsp:+',
+  listchars = 'tab:> ,nbsp:+',
   relativenumber = false,
   scrolloff = 999,
 }
