@@ -2,25 +2,17 @@ local options = {
   ensure_installed = {
     --- Language ---
     'css',
+    'scss',
     'go',
     'html',
     'java',
     'javascript',
     'lua',
-    'luadoc',
-    'luau',
-    'php',
-    'printf',
     'python',
-    'rust',
-    'vim',
-    'vimdoc',
 
     --- Shell ---
     'bash',
-    'fish',
     'powershell',
-    'tmux',
 
     --- Build ---
     'dockerfile',
@@ -43,7 +35,6 @@ local options = {
     'yaml',
 
     --- Config ---
-    'gpg',
     'nginx',
     'passwd',
     'ssh_config',

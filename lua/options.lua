@@ -19,7 +19,7 @@ local options = {
   whichwrap = opt.whichwrap - '<>[]hl',
 
   --- Custom ---
-  -- colorcolumn = '100',
+  colorcolumn = '80',
   list = true,
   -- listchars = 'eol:↴,tab:> ,space:·,nbsp:+',
   listchars = 'tab:> ,nbsp:+',
@@ -33,8 +33,9 @@ end
 
 -- Neovide config
 if g.neovide then
-  -- opt.columns = 91
-  -- opt.lines = 22
+  opt.columns = 95
+  opt.lines = 20
+  opt.guifont = 'JetBrainsMono NF:h11'
 
   g.neovide_refresh_rate = 30
   g.neovide_remember_window_size = true

@@ -40,12 +40,8 @@ return {
   },
 
   {
-    'windwp/nvim-autopairs',
-    enabled = false,
-  },
-
-  {
     'nvim-treesitter/nvim-treesitter',
+    ft = 'checkhealth',
     opts = function()
       return require('configs.treesitter')
     end,
@@ -53,6 +49,7 @@ return {
 
   --- Custom ---
   { 'echasnovski/mini.nvim' }, -- For which-key
+
   { 'nvim-treesitter/nvim-treesitter-textobjects' }, -- For nvim-surround
 
   {
@@ -70,11 +67,12 @@ return {
     opts = require('configs.nnp'),
   },
 
-  {
-    'lukas-reineke/virt-column.nvim',
-    lazy = false,
-    opts = require('configs.virt-column'),
-  },
+  -- https://github.com/lukas-reineke/virt-column.nvim/issues/49
+  -- {
+  --   'lukas-reineke/virt-column.nvim',
+  --   lazy = false,
+  --   opts = require('configs.virt-column'),
+  -- },
 
   {
     'lambdalisue/vim-suda',
@@ -87,13 +85,13 @@ return {
   },
 
   {
-    'altermo/ultimate-autopair.nvim',
-    event = { 'InsertEnter', 'CmdlineEnter' },
-    branch = 'v0.6',
-    opts = {},
+    'windwp/nvim-ts-autotag',
+    event = { 'BufReadPre', 'BufNewFile' },
+    config = function()
+      require('nvim-ts-autotag').setup()
+    end,
   },
 
   -- test new blink
   -- { import = "nvchad.blink.lazyspec" },
-
 }
