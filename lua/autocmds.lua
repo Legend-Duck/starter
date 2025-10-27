@@ -2,6 +2,7 @@ require('nvchad.autocmds')
 
 local autocmd = vim.api.nvim_create_autocmd
 
+-- https://github.com/windwp/nvim-autopairs/wiki/Custom-rules
 autocmd({ 'InsertEnter' }, {
   group = vim.api.nvim_create_augroup('Custom', { clear = true }),
   callback = function()
