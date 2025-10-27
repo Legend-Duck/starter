@@ -1,15 +1,14 @@
 local options = {
   formatters_by_ft = {
     css = { 'prettier' },
-    html = { 'prettier' },
+    scss = { 'prettier' },
+    -- html = { 'prettier' },
     java = { 'google-java-format' },
     javascript = { 'prettier' },
     json = { 'prettier' },
     lua = { 'stylua' },
-    luau = { 'stylua' },
     markdown = { 'prettier' },
     python = { 'isort', 'docformatter', 'black' },
-    rust = { 'rustfmt' },
     xml = { 'xmlformatter' },
     yaml = { 'prettier' },
     -- Use the "*" filetype to run formatters on all filetypes.
@@ -48,17 +47,23 @@ local options = {
           return {}
         end
       end,
-
       append_args = { '-' },
     },
+
     isort = {
       args = { '--profile', 'black' },
       append_args = { '-' },
     },
+
     docformatter = {
       args = { '--black' },
       append_args = { '-' },
     },
+
+    -- Incompatible with Hugo template
+    -- prettier = {
+    --   append_args = { '--print-width', '100' },
+    -- },
   },
 }
 
