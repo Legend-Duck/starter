@@ -14,7 +14,7 @@ local options = {
   clipboard = '',
   cursorlineopt = 'both',
   -- fillchars = { eob = '~' },
-  mouse = '',
+  -- mouse = '',
   shortmess = opt.shortmess - 'I',
   whichwrap = opt.whichwrap - '<>[]hl',
 
@@ -31,7 +31,12 @@ for key, value in pairs(options) do
   opt[key] = value
 end
 
--- Neovide config
+-- No mouse on server
+if jit.os == 'Linux' then
+  opt.mouse = ''
+end
+
+-- Neovide config (for Windows)
 if g.neovide then
   opt.columns = 95
   opt.lines = 20
