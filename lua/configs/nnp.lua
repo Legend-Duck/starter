@@ -1,9 +1,7 @@
 return {
-  -- width = 105,
-  autocmds = {
-    enableOnVimEnter = false,
-    enableOnTabEnter = false,
-    reloadOnColorSchemeChange = false,
-    skipEnteringNoNeckPainBuffer = true,
-  },
+  width = 120,
+  minSideBufferWidth = 5,
+  -- mappings = {
+  --   enabled = true,
+  -- },
 }
