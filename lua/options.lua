@@ -43,7 +43,7 @@ if g.neovide then
   opt.guifont = 'JetBrainsMono NF:h11'
 
   g.neovide_refresh_rate = 30
-  g.neovide_remember_window_size = true
+  g.neovide_remember_window_size = false
 
   g.neovide_position_animation_length = 0
   g.neovide_cursor_animation_length = 0.00
