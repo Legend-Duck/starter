@@ -92,6 +92,13 @@ return {
     end,
   },
 
+  {
+    'nvzone/typr',
+    dependencies = 'nvzone/volt',
+    opts = {},
+    cmd = { 'Typr', 'TyprStats' },
+  },
+
   -- test new blink
   -- { import = "nvchad.blink.lazyspec" },
 }
