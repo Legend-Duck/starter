@@ -11,7 +11,7 @@ local g = vim.g
 
 local options = {
   --- Override ---
-  clipboard = '',
+  -- clipboard = '',
   cursorlineopt = 'both',
   -- fillchars = { eob = '~' },
   -- mouse = '',
@@ -31,9 +31,10 @@ for key, value in pairs(options) do
   opt[key] = value
 end
 
--- No mouse on server
+-- No mouse & clipboard on server
 if jit.os == 'Linux' then
   opt.mouse = ''
+  opt.clipboard = ''
 end
 
 -- Neovide config (for Windows)
