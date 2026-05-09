@@ -39,8 +39,8 @@ end
 
 -- Neovide config (for Windows)
 if g.neovide then
-  opt.columns = 95
-  opt.lines = 20
+  opt.columns = 90
+  opt.lines = 24
   opt.guifont = 'JetBrainsMono NF:h11'
 
   g.neovide_refresh_rate = 30
