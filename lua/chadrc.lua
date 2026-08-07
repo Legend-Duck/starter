@@ -6,7 +6,9 @@
 local M = {}
 
 M.base46 = {
-  theme = 'catppuccin',
+  -- theme = 'catppuccin', -- outdated
+  -- theme = 'gruvbox', -- only medium contrast
+  theme = 'gruvchad', -- modified of gruvbox-material
 
   -- hl_override = {
   --   Comment = { italic = true },
@@ -17,12 +19,11 @@ M.base46 = {
 M.ui = {
   statusline = {
     theme = 'vscode_colored',
-    -- separator_style = "block",
     order = {
       'mode',
       'file',
-      -- '_file',
-      '_mode',
+      '_help',
+      '_modified',
       '_readonly',
       'git',
       '%=',
@@ -30,36 +31,30 @@ M.ui = {
       '%=',
       'diagnostics',
       'lsp',
-      '_count',
-      -- 'cwd',
-      '_user',
+      'cursor',
+      '_percentage',
+      'cwd',
     },
     modules = {
-      _file = '%#StText#' .. ' %t ',
-      _mode = function()
+      -- check available highlights with :filter /St_/ highlight
+      _help = '%#St_ft#' .. '%h',
+      _modified = function()
         if vim.api.nvim_get_option_value('modifiable', { buf = 0 }) then
-          return '%#St_lspWarning#' .. '%m' .. '%#StText#'
+          return '%#St_lspWarning#' .. '%m' -- show only when modified
         else
-          return '%#St_LspMsg#' .. '[-]' .. '%#StText#'
+          return '%#St_LspError#' .. '[-]'
         end
       end,
-
-      _readonly = '%#St_LspMsg#' .. '%r' .. '%#StText#',
-      _count = '%#StText#' .. 'C:%c/%p%%' .. ' ',
-      _user = '%#St_cwd#  ' .. vim.fn.expand('$USER') .. ' ',
+      _readonly = '%#St_LspError#' .. '%r' .. '%#StText#', -- fix color
+      _percentage = '%#StText#' .. '(%p%%) ',
     },
+  },
+
+  tabufline = {
+    lazyload = false,
   },
 }
 
-M.mason = {
-  pkgs = { 'docformatter', 'xmlformatter' }, -- Temp fix
-}
-
 -- M.nvdash = { load_on_startup = true }
--- M.ui = {
---       tabufline = {
---          lazyload = false
---      }
--- }
 
 return M
