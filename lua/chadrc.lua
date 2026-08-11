@@ -7,8 +7,7 @@ local M = {}
 
 M.base46 = {
   -- theme = 'catppuccin', -- outdated
-  -- theme = 'gruvbox', -- only medium contrast
-  theme = 'gruvchad', -- modified of gruvbox-material
+  theme = 'onedark',
 
   -- hl_override = {
   --   Comment = { italic = true },
