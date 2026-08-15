@@ -1,10 +1,6 @@
--- local cmp = require("cmp")
-
-local options = {
+return {
   completion = {
     completeopt = "menu,menuone,noselect",
   },
   -- preselect = cmp.PreselectMode.None,
 }
-
-return require("utils").ext("cmp", options)

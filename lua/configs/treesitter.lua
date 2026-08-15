@@ -1,48 +1,32 @@
-local options = {
+return {
   ensure_installed = {
     --- Language ---
-    'css',
-    'scss',
-    'go',
-    'html',
-    'java',
-    'javascript',
-    'lua',
-    'python',
+    "python",
 
     --- Shell ---
-    'bash',
-    'powershell',
+    "powershell",
+    "bash",
+    "zsh",
 
     --- Build ---
-    'dockerfile',
-    'make',
+    "dockerfile",
 
     --- Git ---
-    'git_config',
-    'git_rebase',
-    'gitattributes',
-    'gitcommit',
-    'gitignore',
+    -- https://github.com/gbprod/tree-sitter-gitcommit/issues/88
+    -- "gitcommit",
+    "gitignore",
 
     --- Data ---
-    'desktop',
-    'ini',
-    'json',
-    'json5',
-    'toml',
-    'xml',
-    'yaml',
+    "json",
+    "toml",
+    "yaml",
 
     --- Config ---
-    'nginx',
-    'passwd',
-    'ssh_config',
+    "nginx",
+    "ssh_config",
 
     --- Text ---
-    'markdown',
-    'markdown_inline',
+    "markdown",
+    "markdown_inline",
   },
 }
-
-return require('utils').ext('treesitter', options)

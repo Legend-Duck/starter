@@ -1,30 +1,19 @@
-require('nvchad.options')
-
--- add yours here!
+require("nvchad.options")
 
 local opt = vim.opt
--- local o = vim.o
 local g = vim.g
-
--- o.cursorlineopt = 'both' -- to enable cursorline!
--- g.virtcolumn_priority = 0 -- priority of extmark
 
 local options = {
   --- Override ---
-  -- clipboard = '',
-  cursorlineopt = 'both',
-  -- fillchars = { eob = '~' },
-  -- mouse = '',
-  shortmess = opt.shortmess - 'I',
-  whichwrap = opt.whichwrap - '<>[]hl',
+  cursorlineopt = "both",
+  shortmess = opt.shortmess - "I",
+  whichwrap = opt.whichwrap - "<>[]hl",
 
   --- Custom ---
-  colorcolumn = '80',
+  -- colorcolumn = "80",
   list = true,
-  -- listchars = 'eol:↴,tab:> ,space:·,nbsp:+',
-  listchars = 'tab:> ,nbsp:+',
+  listchars = "tab:> ,nbsp:+",
   relativenumber = false,
-  scrolloff = 999,
 }
 
 for key, value in pairs(options) do
@@ -32,16 +21,17 @@ for key, value in pairs(options) do
 end
 
 -- No mouse & clipboard on server
-if jit.os == 'Linux' then
-  opt.mouse = ''
-  opt.clipboard = ''
+if jit.os == "Linux" then
+  opt.mouse = ""
+  opt.clipboard = ""
 end
 
 -- Neovide config (for Windows)
 if g.neovide then
-  opt.columns = 90
-  opt.lines = 24
-  opt.guifont = 'JetBrainsMono NF:h11'
+  -- use neovide --grid=120x30
+  -- opt.columns = 90
+  -- opt.lines = 24
+  opt.guifont = "JetBrainsMono NF:h12"
 
   g.neovide_refresh_rate = 30
   g.neovide_remember_window_size = false
@@ -53,5 +43,5 @@ if g.neovide then
   g.neovide_cursor_animate_command_line = false
   g.neovide_scroll_animation_far_lines = 0
   g.neovide_scroll_animation_length = 0.00
-  g.neovide_cursor_vfx_mode = ''
+  g.neovide_cursor_vfx_mode = ""
 end

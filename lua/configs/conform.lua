@@ -1,70 +1,37 @@
-local options = {
+return {
   formatters_by_ft = {
-    css = { 'prettier' },
-    scss = { 'prettier' },
-    -- html = { 'prettier' },
-    java = { 'google-java-format' },
-    javascript = { 'prettier' },
-    json = { 'prettier' },
-    lua = { 'stylua' },
-    markdown = { 'prettier' },
-    python = { 'isort', 'docformatter', 'black' },
-    xml = { 'xmlformatter' },
-    yaml = { 'prettier' },
-    -- Use the "*" filetype to run formatters on all filetypes.
-    -- ['*'] = { 'codespell' },
-    -- Use the "_" filetype to run formatters on filetypes that don't
-    -- have other formatters configured.
-    -- ['_'] = { 'trim_whitespace' },
+    lua = { "stylua" },
+    bash = { "shfmt" },
+    python = { "ruff" },
+    javascript = { "prettier" },
+    typescript = { "prettier" },
+    vue = { "prettier" },
+    css = { "prettier" },
+    scss = { "prettier" },
+    less = { "prettier" },
+    html = { "prettier" },
+    json = { "prettier" },
+    jsonc = { "prettier" },
+    yaml = { "prettier" },
+    markdown = { "prettier" },
+    graphql = { "prettier" },
+    handlebars = { "prettier" },
   },
 
-  format_on_save = {
-    -- These options will be passed to conform.format()
-    timeout_ms = 500,
-    lsp_format = 'fallback',
-  },
+  -- If this is set, Conform will run the formatter on save.
+  -- It will pass the table to conform.format().
+  -- This can also be a function that returns the table.
+  format_on_save = {},
 
   formatters = {
     stylua = {
-      args = function()
-        if not vim.fs.root(0, { 'stylua.toml', '.stylua.toml' }) then
-          return {
-            '--column-width',
-            '100',
-            '--line-endings',
-            'Unix',
-            '--indent-type',
-            'Spaces',
-            '--indent-width',
-            '2',
-            '--quote-style',
-            'AutoPreferSingle',
-            '--call-parentheses',
-            'Always',
-            '--sort-requires',
-          }
-        else
-          return {}
-        end
-      end,
-      append_args = { '-' },
+      append_args = {
+        "--indent-type",
+        "Spaces",
+        "--indent-width",
+        "2",
+        "--sort-requires",
+      },
     },
-
-    isort = {
-      args = { '--profile', 'black' },
-      append_args = { '-' },
-    },
-
-    docformatter = {
-      args = { '--black' },
-      append_args = { '-' },
-    },
-
-    -- Incompatible with Hugo template
-    -- prettier = {
-    --   append_args = { '--print-width', '100' },
-    -- },
   },
 }
-
-return options

@@ -62,3 +62,26 @@ autocmd({ 'InsertEnter' }, {
     end
   end,
 })
+
+vim.api.nvim_create_autocmd('User', {
+  pattern = 'TSUpdate',
+  callback = function()
+    require('nvim-treesitter.parsers').zsh = {
+      install_info = {
+        'https://github.com/georgeharker/tree-sitter-zsh',
+        generate_from_json = false, -- only needed if repo does not contain `src/grammar.json` either
+        queries = 'nvim-queries', -- also install queries from given directory
+      },
+      tier = 3,
+    }
+  end,
+})
+
+vim.filetype.add({
+  extension = {
+    zimrc = 'zsh',
+  },
+  filename = {
+    ['compose.yaml'] = 'yaml.docker-compose',
+  },
+})
