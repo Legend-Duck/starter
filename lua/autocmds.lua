@@ -1,51 +1,47 @@
-require('nvchad.autocmds')
+require("nvchad.autocmds")
 
 local autocmd = vim.api.nvim_create_autocmd
 
 -- https://github.com/windwp/nvim-autopairs/wiki/Custom-rules
-autocmd({ 'InsertEnter' }, {
-  group = vim.api.nvim_create_augroup('Custom', { clear = true }),
+autocmd({ "InsertEnter" }, {
+  group = vim.api.nvim_create_augroup("Custom", { clear = true }),
   callback = function()
-    local npairs = require('nvim-autopairs')
-    local Rule = require('nvim-autopairs.rule')
-    local cond = require('nvim-autopairs.conds')
+    local npairs = require("nvim-autopairs")
+    local Rule = require("nvim-autopairs.rule")
+    local cond = require("nvim-autopairs.conds")
 
-    local brackets = { { '(', ')' }, { '[', ']' }, { '{', '}' } }
+    local brackets = { { "(", ")" }, { "[", "]" }, { "{", "}" } }
     npairs.add_rules({
       -- Rule for a pair with left-side ' ' and right side ' '
-      Rule(' ', ' ')
+      Rule(" ", " ")
         -- Pair will only occur if the conditional function returns true
-        :with_pair(
-          function(opts)
-            -- We are checking if we are inserting a space in (), [], or {}
-            local pair = opts.line:sub(opts.col - 1, opts.col)
-            return vim.tbl_contains({
-              brackets[1][1] .. brackets[1][2],
-              brackets[2][1] .. brackets[2][2],
-              brackets[3][1] .. brackets[3][2],
-            }, pair)
-          end
-        )
+        :with_pair(function(opts)
+          -- We are checking if we are inserting a space in (), [], or {}
+          local pair = opts.line:sub(opts.col - 1, opts.col)
+          return vim.tbl_contains({
+            brackets[1][1] .. brackets[1][2],
+            brackets[2][1] .. brackets[2][2],
+            brackets[3][1] .. brackets[3][2],
+          }, pair)
+        end)
         :with_move(cond.none())
         :with_cr(cond.none())
         -- We only want to delete the pair of spaces when the cursor is as such: ( | )
-        :with_del(
-          function(opts)
-            local col = vim.api.nvim_win_get_cursor(0)[2]
-            local context = opts.line:sub(col - 1, col + 2)
-            return vim.tbl_contains({
-              brackets[1][1] .. '  ' .. brackets[1][2],
-              brackets[2][1] .. '  ' .. brackets[2][2],
-              brackets[3][1] .. '  ' .. brackets[3][2],
-            }, context)
-          end
-        ),
+        :with_del(function(opts)
+          local col = vim.api.nvim_win_get_cursor(0)[2]
+          local context = opts.line:sub(col - 1, col + 2)
+          return vim.tbl_contains({
+            brackets[1][1] .. "  " .. brackets[1][2],
+            brackets[2][1] .. "  " .. brackets[2][2],
+            brackets[3][1] .. "  " .. brackets[3][2],
+          }, context)
+        end),
     })
     -- For each pair of brackets we will add another rule
     for _, bracket in pairs(brackets) do
       npairs.add_rules({
         -- Each of these rules is for a pair with left-side '( ' and right-side ' )' for each bracket type
-        Rule(bracket[1] .. ' ', ' ' .. bracket[2])
+        Rule(bracket[1] .. " ", " " .. bracket[2])
           :with_pair(cond.none())
           :with_move(function(opts)
             return opts.char == bracket[2]
@@ -53,35 +49,19 @@ autocmd({ 'InsertEnter' }, {
           :with_del(cond.none())
           :use_key(bracket[2])
           -- Removes the trailing whitespace that can occur without this
-          :replace_map_cr(
-            function(_)
-              return '<C-c>2xi<CR><C-c>O'
-            end
-          ),
+          :replace_map_cr(function(_)
+            return "<C-c>2xi<CR><C-c>O"
+          end),
       })
     end
   end,
 })
 
-vim.api.nvim_create_autocmd('User', {
-  pattern = 'TSUpdate',
-  callback = function()
-    require('nvim-treesitter.parsers').zsh = {
-      install_info = {
-        'https://github.com/georgeharker/tree-sitter-zsh',
-        generate_from_json = false, -- only needed if repo does not contain `src/grammar.json` either
-        queries = 'nvim-queries', -- also install queries from given directory
-      },
-      tier = 3,
-    }
-  end,
-})
-
 vim.filetype.add({
   extension = {
-    zimrc = 'zsh',
+    zimrc = "zsh",
   },
   filename = {
-    ['compose.yaml'] = 'yaml.docker-compose',
+    ["compose.yaml"] = "yaml.docker-compose",
   },
 })
