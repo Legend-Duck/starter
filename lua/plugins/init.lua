@@ -11,11 +11,6 @@ return {
     opts = require("configs.conform"),
   },
 
-  -- {
-  --   "lewis6991/gitsigns.nvim",
-  --   opts = require("configs.gitsigns"),
-  -- },
-
   {
     "williamboman/mason.nvim",
     opts = require("configs.mason"),
@@ -60,13 +55,6 @@ return {
     cmd = { "NoNeckPain" },
     opts = require("configs.nnp"),
   },
-
-  -- https://github.com/lukas-reineke/virt-column.nvim/issues/49
-  -- {
-  --   'lukas-reineke/virt-column.nvim',
-  --   lazy = false,
-  --   opts = require('configs.virt-column'),
-  -- },
 
   {
     "lambdalisue/vim-suda",
